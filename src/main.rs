@@ -32,9 +32,7 @@ fn extract_internal_external_links(page_content: &str) -> HashSet<Cow<str>> {
 async fn main() -> Result<(), Box<dyn Error>> {
     let url = "https://en.wikipedia.org/w/index.php?title=Rust_(programming_language)&action=raw";
     // make a request to url and get the page content
-    let page_content = reqwest::blocking::get(url)
-        .and_then(|mut res| res.text())
-        .unwrap();
+    let page_content = reqwest::get(url).await?.text().await?;
     let links = extract_internal_external_links(page_content.as_str());
     println!("{:?}", links);
     Ok(())
