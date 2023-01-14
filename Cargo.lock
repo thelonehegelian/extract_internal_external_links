@@ -356,6 +356,7 @@ name = "media_wiki"
 version = "0.1.0"
 dependencies = [
  "lazy_static",
+ "quote",
  "regex",
  "reqwest",
  "serde",
